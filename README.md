@@ -1,183 +1,186 @@
-# TaskMate - Professional Task Management Application
+# TodoApp Project
 
-Welcome to **TaskMate**, a React-based task management application designed to help you track and manage tasks effectively. This project is developed with a focus on clean design, intuitive user experience, and modular code structure.
+## Overview
+The **TodoApp** project is a full-stack web application developed to manage tasks effectively. It integrates a responsive React-based frontend and a robust Java backend built using Spring Boot. The project allows users to create, update, and delete tasks, organized under "Todo," "In Progress," and "Completed" categories.
+
+---
 
 ## Features
 
-- **Intuitive Task Management**: Add tasks with a title, description, due date, and assign them to the appropriate category (To-Do, In Progress, Completed).
-- **Bootstrap Styling**: A sleek and responsive UI built with Bootstrap.
-- **Hover Effects**: Interactive hover effects for task cards to improve user experience.
-- **Dynamic Task Allocation**: Tasks can be dynamically added to specific categories.
-- **Modular Architecture**: Organized project structure for easy scalability and maintenance.
+### Frontend
+- **Responsive Design:** Built using React.js and styled with Bootstrap for a seamless user experience.
+- **Interactive UI:** Includes task columns (Todo, In Progress, Completed) with hover effects.
+- **Add Task Modal:** Allows users to specify task title, description, and deadline.
+- **Dynamic Updates:** Tasks are dynamically rendered in the chosen column.
+
+### Backend
+- **REST API:** Built with Spring Boot to handle task-related operations.
+- **Database Integration:** Uses Hibernate and JPA for seamless database communication.
+- **Task Management:** CRUD operations for tasks with real-time updates.
+- **Service Layer Architecture:** Clean separation of concerns with Controller, Service, and Repository layers.
 
 ---
 
 ## Project Structure
 
-Here is the complete structure of the TaskMate project in IntelliJ:
-
+### Backend Directory Structure (IntelliJ)
 ```
-.
-├── public
-│   ├── index.html        # Main entry point for the app
-│   └── manifest.json     # Metadata for progressive web apps
-┌── src
-    ├── App.js            # Main application file
-    ├── App.css           # Global styles
-    ├── index.js         # Entry point for React
-    ├── components
-    │   ├── Navbar
-    │   │   ├── Navbar.jsx      # Navbar component
-    │   │   └── Navbar.module.css # Navbar-specific styles
-    │   ├── TaskBoard
-    │   │   ├── TaskBoard.jsx   # TaskBoard for displaying task categories
-    │   │   └── TaskBoard.module.css # TaskBoard-specific styles
-    │   ├── TaskModal
-    │   │   ├── TaskModal.jsx  # Modal for adding tasks
-    │   │   └── TaskModal.module.css # TaskModal-specific styles
-    │   ├── TaskColumn
-    │   │   ├── TaskColumn.jsx # Columns for categories (To-Do, In Progress, Completed)
-    │   │   └── TaskColumn.module.css # TaskColumn-specific styles
-    └── assets
-        ├── images          # Placeholder for all static assets
-        └── icons
+- src
+  - main
+    - java
+      - com.example.todoapp
+        - Controller
+          - TaskController.java
+        - model
+          - Task.java
+        - repository
+          - TaskRepository.java
+        - service
+          - TaskService.java
+          - TaskServiceImpl.java
+        - TodoappApplication.java
+    - resources
+      - application.properties
+      - graphql/
+      - static/
+      - templates/
+  - test
+```
+
+### Frontend Directory Structure (React)
+```
+- public
+  - favicon.ico
+  - index.html
+  - logo192.png
+  - logo512.png
+  - manifest.json
+  - robots.txt
+- src
+  - components
+    - Footer
+      - Footer.module.css
+    - Navbar
+      - Navbar.jsx
+      - Navbar.module.css
+    - TaskBoard
+      - TaskBoard.jsx
+      - TaskBoard.module.css
+    - TaskColumn
+      - TaskColumn.jsx
+    - TaskModal
+      - TaskModal.jsx
+  - ui
+    - App.css
+    - App.js
+    - App.test.js
+    - index.css
+    - index.js
+    - setupTests.js
+  - icons
+    - bin.jsx
+    - dropdown.jsx
 ```
 
 ---
 
-## Setup Instructions
-
-To run the project locally, follow these steps:
+## Getting Started
 
 ### Prerequisites
-
-Ensure you have the following installed on your system:
-- **Node.js** (v14+)
+- **Java 11+**
+- **Node.js** (v14 or above)
 - **npm** or **yarn**
-- **IntelliJ IDEA** (or any preferred IDE for React projects)
+- **IntelliJ IDEA**
+- **React Developer Tools**
 
 ### Installation
-
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/taskmate.git
-   cd taskmate
+   git clone <repository-url>
+   cd TodoApp
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+2. **Backend Setup:**
+   - Open the project in IntelliJ IDEA.
+   - Navigate to `src/main/resources/application.properties` and configure your database credentials.
+   - Build and run the Spring Boot application.
 
-3. Install Bootstrap for styling:
-   ```bash
-   npm install bootstrap
-   ```
-
-4. Start the development server:
-   ```bash
-   npm start
-   ```
-
-The app will be live at [http://localhost:3000](http://localhost:3000).
+3. **Frontend Setup:**
+   - Navigate to the `src` folder in the terminal.
+   - Install dependencies:
+     ```bash
+     npm install
+     ```
+   - Start the React development server:
+     ```bash
+     npm start
+     ```
 
 ---
 
-## Components Overview
+## Usage
 
-### Navbar
-- Contains navigation links: **Home**, **Tasks**, and **Settings**.
-- Positioned at the top of the application.
+### Add Task
+1. Click the "Add Task" button above the task columns.
+2. Fill in the task details in the modal.
+3. Select the appropriate category (Todo, In Progress, Completed).
+4. Click "Add." The task will appear in the chosen column.
 
-### Task Board
-- Displays task categories: **To-Do**, **In Progress**, **Completed**.
-- Dynamically updates when tasks are added or removed.
-
-### Task Modal
-- Modal for adding new tasks.
-- Includes fields for:
-  - **Column**: Dropdown to select the category.
-  - **Title**: Text input for task title.
-  - **Description**: Textarea for task description.
-  - **Due Date**: Date picker for deadlines.
-
-### Task Column
-- Displays tasks for a specific category.
-- Cards are styled with hover effects for interactivity.
+### Manage Tasks
+- **Move Task:** Drag and drop tasks between columns.
+- **Delete Task:** Click the delete icon on a task card.
+- **Edit Task:** Click the task card to edit details.
 
 ---
 
-## Styling
+## Technologies Used
 
-- **Global Styling**: `App.css` contains the base styling for the application.
-- **Component-Specific Styling**:
-  - Navbar: `Navbar.module.css`
-  - Task Board: `TaskBoard.module.css`
-  - Task Modal: `TaskModal.module.css`
-  - Task Column: `TaskColumn.module.css`
+### Frontend
+- React.js
+- Bootstrap 5
+
+### Backend
+- Spring Boot
+- Hibernate & JPA
+- MySQL (or any other RDBMS)
+
+### Development Tools
+- IntelliJ IDEA
+- Visual Studio Code
 
 ---
 
 ## Screenshots
 
-### Application Overview
-_Add screenshots here_
+### Application Interface
+![Screenshot 2024-12-29 192038](https://github.com/user-attachments/assets/38153fd6-ba3a-4130-849e-d69c1e4a6ff0)
 
-### Add Task Modal
-_Add screenshots here_
+![Screenshot 2024-12-29 174556](https://github.com/user-attachments/assets/33b05810-f2de-4acf-a336-27eabd4f5b73)
+
+![Screenshot 2024-12-29 134830](https://github.com/user-attachments/assets/6b4c3cc4-a395-4925-9dd9-859ab80f6fef)
+
+
+
 
 ---
 
 ## Future Enhancements
-
-1. **Drag and Drop**:
-   - Implement drag-and-drop functionality to move tasks between columns.
-
-2. **Search Functionality**:
-   - Add a search bar to filter tasks by keywords.
-
-3. **User Authentication**:
-   - Integrate login and registration functionality.
-
-4. **Task Priority**:
-   - Add priority levels (High, Medium, Low) for tasks.
+- **Authentication:** Add user login and registration.
+- **Drag-and-Drop Functionality:** Enhance task movement.
+- **Notifications:** Implement deadline reminders.
 
 ---
 
-## Contribution Guidelines
-
-We welcome contributions to improve TaskMate! Follow these steps:
-
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "Add new feature"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Submit a pull request for review.
+## Contributors
+- **[Your Name]** - Full-Stack Developer
 
 ---
 
 ## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-## Contact
-
-For any queries or feedback, please reach out at:
-- **Email**: your-email@example.com
-- **GitHub**: [your-username](https://github.com/your-username)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-Thank you for using **TaskMate**! We hope it makes your task management easier and more efficient!
+## Acknowledgments
+- Thanks to the React and Spring Boot communities for their comprehensive documentation and support.
 
